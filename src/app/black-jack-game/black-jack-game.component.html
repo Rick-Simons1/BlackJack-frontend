@@ -1,0 +1,532 @@
+<style>
+  body {
+    background-image: url("../../assets/pictures/blackjacktable.jpg");
+    height: 1060px;
+    width: 100%;
+  }
+
+  .player1 {
+    position: absolute;
+    top: 750px;
+    left: 46%;
+    width: 200px;
+
+  }
+  .player2 {
+    position: absolute;
+    top: 650px;
+    left: 27%;
+    width: 200px;
+
+  }
+  .player3 {
+    position: absolute;
+    top: 450px;
+    left: 13%;
+    width: 200px;
+
+  }
+  .player4 {
+    position: absolute;
+    top: 650px;
+    left: 66%;
+    width: 200px;
+
+  }
+  .player5 {
+    position: absolute;
+    top: 450px;
+    left: 80%;
+    width: 200px;
+  }
+  .dealer {
+    position: absolute;
+    top: 50px;
+    left: 42%;
+
+  }
+  .player1split {
+    position: absolute;
+    top: 750px;
+    left: 51%;
+    width: 200px;
+
+  }
+  .player2split {
+    position: absolute;
+    top: 650px;
+    left: 32%;
+    width: 200px;
+
+  }
+  .player3split {
+    position: absolute;
+    top: 450px;
+    left: 18%;
+    width: 200px;
+
+  }
+  .player4split {
+    position: absolute;
+    top: 650px;
+    left: 71%;
+    width: 200px;
+
+  }
+  .player5split {
+    position: absolute;
+    top: 450px;
+    left: 85%;
+    width: 200px;
+  }
+
+  .player1card1 {
+    position: relative;
+    top: 0;
+    left: 0;
+    border: 1px red solid;
+  }
+  .player1card2 {
+    position: absolute;
+    bottom: 40px;
+    left: 0px;
+    border: 1px green solid;
+  }
+  .player1card3 {
+    position: absolute;
+    bottom: 80px;
+    left: 0px;
+    border: 1px green solid;
+  }
+  .player1card4 {
+    position: absolute;
+    bottom: 120px;
+    left: 0px;
+    border: 1px green solid;
+  }
+  .player1card5 {
+    position: absolute;
+    bottom: 160px;
+    left: 0px;
+    border: 1px green solid;
+
+  }
+  .player1splitcard1 {
+    position: relative;
+    top: 0;
+    left: 0;
+    border: 1px red solid;
+  }
+  .player1splitcard2 {
+    position: absolute;
+    bottom: 40px;
+    left: 0px;
+    border: 1px green solid;
+  }
+  .player1splitcard3 {
+    position: absolute;
+    bottom: 80px;
+    left: 0px;
+    border: 1px green solid;
+  }
+  .player1splitcard4 {
+    position: absolute;
+    bottom: 120px;
+    left: 0px;
+    border: 1px green solid;
+  }
+  .player1splitcard5 {
+    position: absolute;
+    bottom: 160px;
+    left: 0px;
+    border: 1px green solid;
+
+  }
+  .player2card1 {
+    position: relative;
+    top: 0;
+    left: 0;
+    border: 1px red solid;
+  }
+  .player2card2 {
+    position: absolute;
+    bottom: 40px;
+    left: 0px;
+    border: 1px green solid;
+  }
+  .player2card3 {
+    position: absolute;
+    bottom: 80px;
+    left: 0px;
+    border: 1px green solid;
+  }
+  .player2card4 {
+    position: absolute;
+    bottom: 120px;
+    left: 0px;
+    border: 1px green solid;
+  }
+  .player2card5 {
+    position: absolute;
+    bottom: 160px;
+    left: 0px;
+    border: 1px green solid;
+
+  }
+  .player2splitcard1 {
+    position: relative;
+    top: 0;
+    left: 0;
+    border: 1px red solid;
+  }
+  .player2splitcard2 {
+    position: absolute;
+    bottom: 40px;
+    left: 0px;
+    border: 1px green solid;
+  }
+  .player2splitcard3 {
+    position: absolute;
+    bottom: 80px;
+    left: 0px;
+    border: 1px green solid;
+  }
+  .player2splitcard4 {
+    position: absolute;
+    bottom: 120px;
+    left: 0px;
+    border: 1px green solid;
+  }
+  .player2splitcard5 {
+    position: absolute;
+    bottom: 160px;
+    left: 0px;
+    border: 1px green solid;
+
+  }
+  .player3card1 {
+    position: relative;
+    top: 0;
+    left: 0;
+    border: 1px red solid;
+  }
+  .player3card2 {
+    position: absolute;
+    bottom: 40px;
+    left: 0px;
+    border: 1px green solid;
+  }
+  .player3card3 {
+    position: absolute;
+    bottom: 80px;
+    left: 0px;
+    border: 1px green solid;
+  }
+  .player3card4 {
+    position: absolute;
+    bottom: 120px;
+    left: 0px;
+    border: 1px green solid;
+  }
+  .player3card5 {
+    position: absolute;
+    bottom: 160px;
+    left: 0px;
+    border: 1px green solid;
+
+  }
+  .player3splitcard1 {
+    position: relative;
+    top: 0;
+    left: 0;
+    border: 1px red solid;
+  }
+  .player3splitcard2 {
+    position: absolute;
+    bottom: 40px;
+    left: 0px;
+    border: 1px green solid;
+  }
+  .player3splitcard3 {
+    position: absolute;
+    bottom: 80px;
+    left: 0px;
+    border: 1px green solid;
+  }
+  .player3splitcard4 {
+    position: absolute;
+    bottom: 120px;
+    left: 0px;
+    border: 1px green solid;
+  }
+  .player3splitcard5 {
+    position: absolute;
+    bottom: 160px;
+    left: 0px;
+    border: 1px green solid;
+
+  }
+  .player4card1 {
+    position: relative;
+    top: 0;
+    left: 0;
+    border: 1px red solid;
+  }
+  .player4card2 {
+    position: absolute;
+    bottom: 40px;
+    left: 0px;
+    border: 1px green solid;
+  }
+  .player4card3 {
+    position: absolute;
+    bottom: 80px;
+    left: 0px;
+    border: 1px green solid;
+  }
+  .player4card4 {
+    position: absolute;
+    bottom: 120px;
+    left: 0px;
+    border: 1px green solid;
+  }
+  .player4card5 {
+    position: absolute;
+    bottom: 160px;
+    left: 0px;
+    border: 1px green solid;
+
+  }
+  .player4splitcard1 {
+    position: relative;
+    top: 0;
+    left: 0;
+    border: 1px red solid;
+  }
+  .player4splitcard2 {
+    position: absolute;
+    bottom: 40px;
+    left: 0px;
+    border: 1px green solid;
+  }
+  .player4splitcard3 {
+    position: absolute;
+    bottom: 80px;
+    left: 0px;
+    border: 1px green solid;
+  }
+  .player4splitcard4 {
+    position: absolute;
+    bottom: 120px;
+    left: 0px;
+    border: 1px green solid;
+  }
+  .player4splitcard5 {
+    position: absolute;
+    bottom: 160px;
+    left: 0px;
+    border: 1px green solid;
+
+  }
+  .player5card1 {
+    position: relative;
+    top: 0;
+    left: 0;
+    border: 1px red solid;
+  }
+  .player5card2 {
+    position: absolute;
+    bottom: 40px;
+    left: 0px;
+    border: 1px green solid;
+  }
+  .player5card3 {
+    position: absolute;
+    bottom: 80px;
+    left: 0px;
+    border: 1px green solid;
+  }
+  .player5card4 {
+    position: absolute;
+    bottom: 120px;
+    left: 0px;
+    border: 1px green solid;
+  }
+  .player5card5 {
+    position: absolute;
+    bottom: 160px;
+    left: 0px;
+    border: 1px green solid;
+
+  }
+  .player5splitcard1 {
+    position: relative;
+    top: 0;
+    left: 0;
+    border: 1px red solid;
+  }
+  .player5splitcard2 {
+    position: absolute;
+    bottom: 40px;
+    left: 0px;
+    border: 1px green solid;
+  }
+  .player5splitcard3 {
+    position: absolute;
+    bottom: 80px;
+    left: 0px;
+    border: 1px green solid;
+  }
+  .player5splitcard4 {
+    position: absolute;
+    bottom: 120px;
+    left: 0px;
+    border: 1px green solid;
+  }
+  .player5splitcard5 {
+    position: absolute;
+    bottom: 160px;
+    left: 0px;
+    border: 1px green solid;
+
+  }
+
+
+  .dealercard1 {
+    position: relative;
+    top: 0;
+    left: 0;
+    border: 1px red solid;
+  }
+  .dealercard2 {
+    position: absolute;
+    bottom: 0px;
+    left: 40px;
+    border: 1px green solid;
+  }
+  .dealercard3 {
+    position: absolute;
+    bottom: 0px;
+    left: 80px;
+    border: 1px green solid;
+  }
+  .dealercard4 {
+    position: absolute;
+    bottom: 0px;
+    left: 120px;
+    border: 1px green solid;
+  }
+  .dealercard5 {
+    position: absolute;
+    bottom: 0px;
+    left: 160px;
+    border: 1px green solid;
+  }
+  .btn btn-success{
+    position: absolute;
+    top: 500px;
+  }
+
+  .btncontainer{
+    position: absolute;
+    top: 95%;
+    left: 42%;
+  }
+
+</style>
+
+<body>
+  <div>
+    <div class="container-fluid">
+      <div class="player1">
+        <img class="player1card1" src="../../assets/pictures/cards/2H.png">
+        <img class="player1card2" src="../../assets/pictures/cards/2H.png">
+        <img class="player1card3" src="../../assets/pictures/cards/2H.png">
+        <img class="player1card4" src="../../assets/pictures/cards/2H.png">
+        <img class="player1card5" src="../../assets/pictures/cards/2H.png">
+      </div>
+      <div class="player1split">
+        <img class="player1splitcard1" src="../../assets/pictures/cards/2H.png">
+        <img class="player1splitcard2" src="../../assets/pictures/cards/2H.png">
+        <img class="player1splitcard3" src="../../assets/pictures/cards/2H.png">
+        <img class="player1splitcard4" src="../../assets/pictures/cards/2H.png">
+        <img class="player1splitcard5" src="../../assets/pictures/cards/2H.png">
+      </div>
+      <div class="player2">
+        <img class="player2card1" src="../../assets/pictures/cards/2H.png">
+        <img class="player2card2" src="../../assets/pictures/cards/2H.png">
+        <img class="player2card3" src="../../assets/pictures/cards/2H.png">
+        <img class="player2card4" src="../../assets/pictures/cards/2H.png">
+        <img class="player2card5" src="../../assets/pictures/cards/2H.png">
+      </div>
+      <div class="player2split">
+        <img class="player2splitcard1" src="../../assets/pictures/cards/2H.png">
+        <img class="player2splitcard2" src="../../assets/pictures/cards/2H.png">
+        <img class="player2splitcard3" src="../../assets/pictures/cards/2H.png">
+        <img class="player2splitcard4" src="../../assets/pictures/cards/2H.png">
+        <img class="player2splitcard5" src="../../assets/pictures/cards/2H.png">
+      </div>
+      <div class="player3">
+        <img class="player3card1" src="../../assets/pictures/cards/2H.png">
+        <img class="player3card2" src="../../assets/pictures/cards/2H.png">
+        <img class="player3card3" src="../../assets/pictures/cards/2H.png">
+        <img class="player3card4" src="../../assets/pictures/cards/2H.png">
+        <img class="player3card5" src="../../assets/pictures/cards/2H.png">
+      </div>
+      <div class="player3split">
+        <img class="player3splitcard1" src="../../assets/pictures/cards/2H.png">
+        <img class="player3splitcard2" src="../../assets/pictures/cards/2H.png">
+        <img class="player3splitcard3" src="../../assets/pictures/cards/2H.png">
+        <img class="player3splitcard4" src="../../assets/pictures/cards/2H.png">
+        <img class="player3splitcard5" src="../../assets/pictures/cards/2H.png">
+      </div>
+      <div class="player4">
+        <img class="player4card1" src="../../assets/pictures/cards/2H.png">
+        <img class="player4card2" src="../../assets/pictures/cards/2H.png">
+        <img class="player4card3" src="../../assets/pictures/cards/2H.png">
+        <img class="player4card4" src="../../assets/pictures/cards/2H.png">
+        <img class="player4card5" src="../../assets/pictures/cards/2H.png">
+      </div>
+      <div class="player4split">
+        <img class="player4splitcard1" src="../../assets/pictures/cards/2H.png">
+        <img class="player4splitcard2" src="../../assets/pictures/cards/2H.png">
+        <img class="player4splitcard3" src="../../assets/pictures/cards/2H.png">
+        <img class="player4splitcard4" src="../../assets/pictures/cards/2H.png">
+        <img class="player4splitcard5" src="../../assets/pictures/cards/2H.png">
+      </div>
+      <div class="player5">
+        <img class="player5card1" src="../../assets/pictures/cards/2H.png">
+        <img class="player5card2" src="../../assets/pictures/cards/2H.png">
+        <img class="player5card3" src="../../assets/pictures/cards/2H.png">
+        <img class="player5card4" src="../../assets/pictures/cards/2H.png">
+        <img class="player5card5" src="../../assets/pictures/cards/2H.png">
+      </div>
+      <div class="player5split">
+        <img class="player5splitcard1" src="../../assets/pictures/cards/2H.png">
+        <img class="player5splitcard2" src="../../assets/pictures/cards/2H.png">
+        <img class="player5splitcard3" src="../../assets/pictures/cards/2H.png">
+        <img class="player5splitcard4" src="../../assets/pictures/cards/2H.png">
+        <img class="player5splitcard5" src="../../assets/pictures/cards/2H.png">
+      </div>
+    </div>
+    <div class="container-fluid">
+      <div class="dealer">
+        <img class="dealercard1" src="../../assets/pictures/cards/2H.png">
+        <img class="dealercard2" src="../../assets/pictures/cards/2H.png">
+        <img class="dealercard3" src="../../assets/pictures/cards/2H.png">
+        <img class="dealercard4" src="../../assets/pictures/cards/2H.png">
+        <img class="dealercard5" src="../../assets/pictures/cards/2H.png">
+      </div>
+
+    </div>
+    <div class="btncontainer">
+      <button type="button" class="btn btn-success btn-lg">hit</button>
+      <button type="button" class="btn btn-success btn-lg">stand</button>
+      <button type="button" class="btn btn-success btn-lg">split</button>
+      <button type="button" class="btn btn-success btn-lg">double</button>
+    </div>
+
+  </div>
+</body>
+
+
