@@ -9,6 +9,7 @@ import {BlackJackGame} from '../models/black-jack-game';
   providedIn: 'root'
 })
 export class BlackjackGameService {
+  //todo change all that use round to blackjackgame
   websocket: any;
   blackjackgame: BlackJackGame;
 
@@ -19,7 +20,11 @@ export class BlackjackGameService {
     let socket = new WebSocket("ws://localhost:8080/blackjackgame");
     this.websocket = Stomp.over(socket);
     let that = this;
-    this.websocket.connect({}, function(frame) {}, function(error) {
+    this.websocket.connect({}, function(frame) {
+      that.websocket.subscribe("/client", function(message) {
+        that.blackjackgame = JSON.parse(message.body);
+      });
+    }, function(error) {
       alert("STOMP error " + error);
     });
   }
@@ -56,7 +61,7 @@ export class BlackjackGameService {
 
   createNewGame(player: Player) {
     this.websocket.send('/app/createGame', {}, JSON.stringify(player));
-    this.getBlackjackGame();
+
   }
 
   nextRound(){
@@ -74,9 +79,9 @@ export class BlackjackGameService {
     this.getCurrentRound();
   }
 
-  dealInitialCards(round: Round){
-    this.websocket.send('/app/dealCards', {}, JSON.stringify(round));
-    this.getCurrentRound();
+  dealInitialCards(round: BlackJackGame){
+    this.websocket.send('/app/deal', {}, JSON.stringify(round));
+
 
   }
 
@@ -89,14 +94,14 @@ export class BlackjackGameService {
   getBlackjackGame(){
     var that = this;
     this.websocket.subscribe("/client", function(message) {
-      that.blackjackgame = message.body;
+      that.blackjackgame = JSON.parse(message.body);
     });
   }
 
   getCurrentRound(){
     var that = this;
     this.websocket.subscribe("/client", function(message) {
-      that.blackjackgame.currentRound = message.body;
+      that.blackjackgame.currentRound = JSON.parse(message.body);
     });
   }
 

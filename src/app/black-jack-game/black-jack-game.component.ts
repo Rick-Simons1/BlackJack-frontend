@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {BlackjackGameService} from '../services/blackjack-game.service';
+import {Card} from '../models/card';
+import {Suits} from '../models/suits.enum';
+import {CardValues} from '../models/card-values.enum';
 import {Player} from '../models/player';
-import {BlackJackGame} from '../models/black-jack-game';
-import {timeout} from 'rxjs/operators';
 
 @Component({
   selector: 'app-black-jack-game',
@@ -11,7 +12,9 @@ import {timeout} from 'rxjs/operators';
 })
 export class BlackJackGameComponent implements OnInit {
   blackjackGameService: BlackjackGameService;
-  blackjackGame: BlackJackGame;
+  pictureSource: string;
+  cardPictureUrl: string;
+  test = false;
 
   constructor(blackjackServiceService: BlackjackGameService) {
     this.blackjackGameService = blackjackServiceService;
@@ -32,10 +35,30 @@ export class BlackJackGameComponent implements OnInit {
       that.setBlackjackGame();
     }, 10);
   }*/
-  setBlackjackGame(){
+ /* setBlackjackGame(){
     this.blackjackGame = this.blackjackGameService.blackjackgame;
 
+  }*/
+
+  testCreategame(){
+    var player = new Player();
+    player.id = 1;
+    player.username = "pietje";
+    player.money = 100;
+    this.blackjackGameService.createNewGame(player);
+
+
+
   }
+  dealcards(){
+    var that = this;
+    setTimeout(function() {
+      that.blackjackGameService.dealInitialCards(that.blackjackGameService.blackjackgame);
+      console.log(that.blackjackGameService.blackjackgame.currentRound.players[0].cards);
+    }, 1000);
+  }
+
+
 
 
 }

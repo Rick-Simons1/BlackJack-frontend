@@ -5,6 +5,7 @@ export class Card {
   cardValue: CardValues;
   cardSuit: Suits;
   cardPoints: number;
+  cardPictureUrl: string;
 
   constructor() {
   }
