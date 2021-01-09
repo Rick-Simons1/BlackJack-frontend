@@ -439,18 +439,18 @@
   <div>
     <div class="container-fluid">
       <div class="player1">
-        <img class="player1card1" src={{this.blackjackGameService.blackjackgame.currentRound.players[0].cards[0].cardPictureUrl}}>
-        <img class="player1card2" src={{this.blackjackGameService.blackjackgame.currentRound.players[0].cards[1].cardPictureUrl}}>
-        <img class="player1card3" src={{this.blackjackGameService.blackjackgame.currentRound.players[0].cards[2].cardPictureUrl}}>
-        <img class="player1card4" src={{this.blackjackGameService.blackjackgame.currentRound.players[0].cards[3].cardPictureUrl}}>
-        <img class="player1card5" src={{this.blackjackGameService.blackjackgame.currentRound.players[0].cards[4].cardPictureUrl}}>
+        <img class="player1card1" src={{this.blackjackGameService.blackjackgame.currentRound.players[0].cards[0].cardPictureUrl}} *ngIf="blackjackGameService.blackjackgame.currentRound.players[0].cards[0];">
+        <img class="player1card2" src={{this.blackjackGameService.blackjackgame.currentRound.players[0].cards[1].cardPictureUrl}} *ngIf="blackjackGameService.blackjackgame.currentRound.players[0].cards[1];">
+        <img class="player1card3" src={{this.blackjackGameService.blackjackgame.currentRound.players[0].cards[2].cardPictureUrl}} *ngIf="blackjackGameService.blackjackgame.currentRound.players[0].cards[2];">
+        <img class="player1card4" src={{this.blackjackGameService.blackjackgame.currentRound.players[0].cards[3].cardPictureUrl}} *ngIf="blackjackGameService.blackjackgame.currentRound.players[0].cards[3];">
+        <img class="player1card5" src={{this.blackjackGameService.blackjackgame.currentRound.players[0].cards[4].cardPictureUrl}} *ngIf="blackjackGameService.blackjackgame.currentRound.players[0].cards[4];">
       </div>
       <div class="player1split">
-        <img class="player1splitcard1" src="../../assets/pictures/cards/2H.png">
-        <img class="player1splitcard2" src="../../assets/pictures/cards/2H.png">
-        <img class="player1splitcard3" src="../../assets/pictures/cards/2H.png">
-        <img class="player1splitcard4" src="../../assets/pictures/cards/2H.png">
-        <img class="player1splitcard5" src="../../assets/pictures/cards/2H.png">
+        <img class="player1splitcard1" src={{this.blackjackGameService.blackjackgame.currentRound.players[0].splitCards[0].cardPictureUrl}} *ngIf="blackjackGameService.blackjackgame.currentRound.players[0].splitCards[0];">
+        <img class="player1splitcard2" src={{this.blackjackGameService.blackjackgame.currentRound.players[0].splitCards[0].cardPictureUrl}} *ngIf="blackjackGameService.blackjackgame.currentRound.players[0].splitCards[1];">
+        <img class="player1splitcard3" src={{this.blackjackGameService.blackjackgame.currentRound.players[0].splitCards[0].cardPictureUrl}} *ngIf="blackjackGameService.blackjackgame.currentRound.players[0].splitCards[2];">
+        <img class="player1splitcard4" src={{this.blackjackGameService.blackjackgame.currentRound.players[0].splitCards[0].cardPictureUrl}} *ngIf="blackjackGameService.blackjackgame.currentRound.players[0].splitCards[3];">
+        <img class="player1splitcard5" src={{this.blackjackGameService.blackjackgame.currentRound.players[0].splitCards[0].cardPictureUrl}} *ngIf="blackjackGameService.blackjackgame.currentRound.players[0].splitCards[4];">
       </div>
       <div class="player2">
         <img class="player2card1" src="../../assets/pictures/cards/2H.png">
@@ -511,19 +511,19 @@
     </div>
     <div class="container-fluid">
       <div class="dealer">
-        <img class="dealercard1" src="../../assets/pictures/cards/2H.png">
-        <img class="dealercard2" src="../../assets/pictures/cards/2H.png">
-        <img class="dealercard3" src="../../assets/pictures/cards/2H.png">
-        <img class="dealercard4" src="../../assets/pictures/cards/2H.png">
-        <img class="dealercard5" src="../../assets/pictures/cards/2H.png">
+        <img class="dealercard1" src={{this.blackjackGameService.blackjackgame.currentRound.dealer.cards[0].cardPictureUrl}} *ngIf="blackjackGameService.blackjackgame.currentRound.dealer.cards[0];">
+        <img class="dealercard2" [src]="blackjackGameService.blackjackgame.currentRound.dealer.cards[1] != null ? '../../assets/pictures/cards/gray_back.png' : blackjackGameService.blackjackgame.currentRound.dealer.cards[1].cardPictureUrl">
+        <img class="dealercard3" src={{this.blackjackGameService.blackjackgame.currentRound.dealer.cards[2].cardPictureUrl}} *ngIf="blackjackGameService.blackjackgame.currentRound.dealer.cards[3];">
+        <img class="dealercard4" src={{this.blackjackGameService.blackjackgame.currentRound.dealer.cards[3].cardPictureUrl}} *ngIf="blackjackGameService.blackjackgame.currentRound.dealer.cards[4];">
+        <img class="dealercard5" src={{this.blackjackGameService.blackjackgame.currentRound.dealer.cards[4].cardPictureUrl}} *ngIf="blackjackGameService.blackjackgame.currentRound.dealer.cards[5];">
       </div>
 
     </div>
     <div class="btncontainer">
-      <button type="button" class="btn btn-success btn-lg">hit</button>
-      <button type="button" class="btn btn-success btn-lg">stand</button>
-      <button type="button" class="btn btn-success btn-lg">split</button>
-      <button type="button" class="btn btn-success btn-lg">double</button>
+      <button type="button" class="btn btn-success btn-lg" (click)="blackjackGameService.sendHit(blackjackGameService.blackjackgame)">hit</button>
+      <button type="button" class="btn btn-success btn-lg" (click)="blackjackGameService.sendStand(blackjackGameService.blackjackgame)">stand</button>
+      <button type="button" class="btn btn-success btn-lg" (click)="blackjackGameService.sendSplit(blackjackGameService.blackjackgame)">split</button>
+      <button type="button" class="btn btn-success btn-lg" (click)="blackjackGameService.sendDouble(blackjackGameService.blackjackgame)">double</button>
     </div>
 
     <button type="button" class="btn btn-success btn-lg" (click)="testCreategame()">create game</button>

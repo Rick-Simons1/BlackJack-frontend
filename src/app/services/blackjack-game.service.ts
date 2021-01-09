@@ -36,26 +36,22 @@ export class BlackjackGameService {
     console.log("Disconnected");
   }
 
-  sendHit(round: Round) {
-    this.websocket.send('/app/hit', {}, JSON.stringify(round));
-    this.getCurrentRound();
+  sendHit(blackJackGame: BlackJackGame) {
+    this.websocket.send('/app/hit', {}, JSON.stringify(blackJackGame));
   }
 
-  sendStand(round: Round) {
-    this.websocket.send('/app/stand', {}, JSON.stringify(round));
-    this.getCurrentRound();
-
-  }
-
-  sendSplit(round: Round) {
-    this.websocket.send('/app/split', {}, JSON.stringify(round));
-    this.getCurrentRound();
+  sendStand(blackJackGame: BlackJackGame) {
+    this.websocket.send('/app/stand', {}, JSON.stringify(blackJackGame));
 
   }
 
-  sendDouble(round: Round) {
-    this.websocket.send('/app/double', {}, JSON.stringify(round));
-    this.getCurrentRound();
+  sendSplit(blackJackGame: BlackJackGame) {
+    this.websocket.send('/app/split', {}, JSON.stringify(blackJackGame));
+
+  }
+
+  sendDouble(blackJackGame: BlackJackGame) {
+    this.websocket.send('/app/double', {}, JSON.stringify(blackJackGame));
 
   }
 
@@ -66,7 +62,6 @@ export class BlackjackGameService {
 
   nextRound(){
     this.websocket.send('/app/nextRound', {});
-    this.getBlackjackGame();
   }
 
   //todo make this working
@@ -74,13 +69,12 @@ export class BlackjackGameService {
     this.websocket.send('/app/addPlayer', {}, JSON.stringify(player));
   }
 
-  checkWinner(round: Round){
-    this.websocket.send('/app/checkWinner', {}, JSON.stringify(round));
-    this.getCurrentRound();
+  checkWinner(blackJackGame: BlackJackGame){
+    this.websocket.send('/app/checkWinner', {}, JSON.stringify(blackJackGame));
   }
 
-  dealInitialCards(round: BlackJackGame){
-    this.websocket.send('/app/deal', {}, JSON.stringify(round));
+  dealInitialCards(blackJackGame: BlackJackGame){
+    this.websocket.send('/app/deal', {}, JSON.stringify(blackJackGame));
 
 
   }
@@ -91,19 +85,7 @@ export class BlackjackGameService {
 
 
   }
-  getBlackjackGame(){
-    var that = this;
-    this.websocket.subscribe("/client", function(message) {
-      that.blackjackgame = JSON.parse(message.body);
-    });
-  }
 
-  getCurrentRound(){
-    var that = this;
-    this.websocket.subscribe("/client", function(message) {
-      that.blackjackgame.currentRound = JSON.parse(message.body);
-    });
-  }
 
 
 

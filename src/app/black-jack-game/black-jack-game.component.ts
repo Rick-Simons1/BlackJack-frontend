@@ -54,7 +54,6 @@ export class BlackJackGameComponent implements OnInit {
     var that = this;
     setTimeout(function() {
       that.blackjackGameService.dealInitialCards(that.blackjackGameService.blackjackgame);
-      console.log(that.blackjackGameService.blackjackgame.currentRound.players[0].cards);
     }, 1000);
   }
 
