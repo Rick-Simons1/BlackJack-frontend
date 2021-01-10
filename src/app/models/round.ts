@@ -7,6 +7,7 @@ export class Round {
   deck: Deck;
   currentPlayer: Player;
   dealer: Dealer;
+  dealersTurn: boolean
 
   constructor() {
   }

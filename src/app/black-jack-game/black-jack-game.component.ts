@@ -16,6 +16,7 @@ export class BlackJackGameComponent implements OnInit {
   cardPictureUrl: string;
   test = false;
 
+
   constructor(blackjackServiceService: BlackjackGameService) {
     this.blackjackGameService = blackjackServiceService;
   }
@@ -52,12 +53,86 @@ export class BlackJackGameComponent implements OnInit {
   }
   dealcards(){
     var that = this;
-    setTimeout(function() {
-      that.blackjackGameService.dealInitialCards(that.blackjackGameService.blackjackgame);
-    }, 1000);
+    that.blackjackGameService.dealInitialCards();
+    /*setTimeout(function() {
+      that.blackjackGameService.blackjackgame.currentRound.players.forEach(player =>{
+        if (player.blackjack){
+
+        }
+      });
+    }, 30);*/
   }
 
+  hit(){
+    var that = this;
+    this.blackjackGameService.sendHit();
+    setTimeout(function (){
+      that.blackjackGameService.blackjackgame.currentRound.players.forEach(player =>{
+        if (that.blackjackGameService.blackjackgame.currentRound.currentPlayer.id === player.id){
+          if (player.splitBlackjack){
+            console.log('split blackjack!')
+            that.stand();
+          }
+          else if (player.blackjack){
+            console.log('blackjack!')
+            that.stand();
+          }
+          if (player.splitBust){
+            console.log('splitbusted!')
+            that.stand();
+          }
+          else if (player.bust){
+            console.log('busted!')
+            that.stand();
+          }
+        }
+      })
+
+    }, 30)
+  }
+
+  hitDealer(){
+    this.blackjackGameService.sendHitDealer();
+  }
+
+  stand(){
+    var that = this;
+    this.blackjackGameService.sendStand();
+    setTimeout(function (){
+      if (that.blackjackGameService.blackjackgame.currentRound.dealersTurn === true){
+        that.dealerScript()
+      }
+    },30);
+
+  }
+
+  double(){
+    this.blackjackGameService.sendDouble();
+  }
+
+  split(){
+    this.blackjackGameService.sendSplit();
+  }
+
+  dealerScript(){
+    var that =this;
+    console.log(this.blackjackGameService.blackjackgame.currentRound.dealer.totalCardPoints);
+
+    if (this.blackjackGameService.blackjackgame.currentRound.dealer.totalCardPoints < 17){
+      this.hitDealer();
+      setTimeout(function (){
+        console.log('repeating script')
+        that.dealerScript();
+      },50)
+    }
+    else {
+      this.blackjackGameService.nextRound();
+      setTimeout(function (){
+        that.dealcards();
+      },50)
+    }
 
 
+  }
 
 }

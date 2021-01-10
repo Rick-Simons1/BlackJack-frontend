@@ -13,6 +13,8 @@ export class Player {
   splitContainsAce: boolean;
   blackjack: boolean;
   splitBlackjack: boolean;
+  bust: boolean;
+  splitbust: boolean;
 
   constructor() {
   }

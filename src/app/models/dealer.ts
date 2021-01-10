@@ -6,6 +6,7 @@ export class Dealer {
   totalCardPoints: number;
   containsAce: boolean;
   blackjack: boolean;
+  bust: boolean;
 
   constructor() {
   }

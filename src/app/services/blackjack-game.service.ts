@@ -36,22 +36,26 @@ export class BlackjackGameService {
     console.log("Disconnected");
   }
 
-  sendHit(blackJackGame: BlackJackGame) {
-    this.websocket.send('/app/hit', {}, JSON.stringify(blackJackGame));
+  sendHit() {
+    this.websocket.send('/app/hit', {}, JSON.stringify(this.blackjackgame));
   }
 
-  sendStand(blackJackGame: BlackJackGame) {
-    this.websocket.send('/app/stand', {}, JSON.stringify(blackJackGame));
+  sendHitDealer() {
+    this.websocket.send('/app/hitDealer', {}, JSON.stringify(this.blackjackgame));
+  }
+
+  sendStand() {
+    this.websocket.send('/app/stand', {}, JSON.stringify(this.blackjackgame));
 
   }
 
-  sendSplit(blackJackGame: BlackJackGame) {
-    this.websocket.send('/app/split', {}, JSON.stringify(blackJackGame));
+  sendSplit() {
+    this.websocket.send('/app/split', {}, JSON.stringify(this.blackjackgame));
 
   }
 
-  sendDouble(blackJackGame: BlackJackGame) {
-    this.websocket.send('/app/double', {}, JSON.stringify(blackJackGame));
+  sendDouble() {
+    this.websocket.send('/app/double', {}, JSON.stringify(this.blackjackgame));
 
   }
 
@@ -61,7 +65,7 @@ export class BlackjackGameService {
   }
 
   nextRound(){
-    this.websocket.send('/app/nextRound', {});
+    this.websocket.send('/app/nextRound', {}, JSON.stringify(this.blackjackgame));
   }
 
   //todo make this working
@@ -69,12 +73,12 @@ export class BlackjackGameService {
     this.websocket.send('/app/addPlayer', {}, JSON.stringify(player));
   }
 
-  checkWinner(blackJackGame: BlackJackGame){
-    this.websocket.send('/app/checkWinner', {}, JSON.stringify(blackJackGame));
+  checkWinner(){
+    this.websocket.send('/app/checkWinner', {}, JSON.stringify(this.blackjackgame));
   }
 
-  dealInitialCards(blackJackGame: BlackJackGame){
-    this.websocket.send('/app/deal', {}, JSON.stringify(blackJackGame));
+  dealInitialCards(){
+    this.websocket.send('/app/deal', {}, JSON.stringify(this.blackjackgame));
 
 
   }
