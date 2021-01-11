@@ -132,6 +132,9 @@ export class BlackJackGameComponent implements OnInit {
     if (this.blackjackGameService.blackjackgame.currentRound.dealer.totalCardPoints < 17){
       this.hitDealer();
       setTimeout(function (){
+        that.dealerShowCorrectPoints;
+      },50)
+      setTimeout(function (){
         console.log('repeating script')
         that.dealerScript();
       },500)
@@ -139,13 +142,22 @@ export class BlackJackGameComponent implements OnInit {
     else {
       setTimeout(function (){
         that.blackjackGameService.nextRound();
-      },4000)
+      },4900)
       setTimeout(function (){
         that.dealcards();
       },5000)
     }
 
 
+  }
+
+  dealerShowCorrectPoints(){
+    if (this.blackjackGameService.blackjackgame.currentRound.dealersTurn){
+      return this.blackjackGameService.blackjackgame.currentRound.dealer.totalCardPoints;
+    }
+    else {
+      return this.blackjackGameService.blackjackgame.currentRound.dealer.visibleCard.cardPoints;
+    }
   }
 
 }
