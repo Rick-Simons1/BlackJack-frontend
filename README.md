@@ -25,3 +25,31 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+
+<form (ngSubmit)="onSubmit()" #userForm="ngForm">
+      <div class="form-group">
+        <label for="username">username</label>
+        <input type="text" [(ngModel)]="user.username"
+               class="form-control"
+               id="username"
+               name="username"
+               placeholder="Enter your username"
+               required #username="ngModel">
+      </div>
+      <div [hidden]="!username.pristine" class="alert alert-danger">username is required</div>
+      <div class="form-group">
+        <label for="password">password</label>
+        <input type="text" [(ngModel)]="user.password"
+               class="form-control"
+               id="password"
+               name="password"
+               placeholder="Enter the password you want to use"
+               required #password="ngModel">
+        <div [hidden]="!password.pristine" class="alert alert-danger">the password is required</div>
+      </div>
+      <button id="loginButton" type="submit" [disabled]="!userForm.form.valid"
+              class="btn btn-info">
+        Submit
+      </button>
+    </form>
