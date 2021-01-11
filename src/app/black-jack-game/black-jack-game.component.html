@@ -523,6 +523,7 @@
         <img class="player1card4" src={{this.blackjackGameService.blackjackgame.currentRound.players[0].cards[3].cardPictureUrl}} *ngIf="blackjackGameService.blackjackgame.currentRound.players[0].cards[3];">
         <img class="player1card5" src={{this.blackjackGameService.blackjackgame.currentRound.players[0].cards[4].cardPictureUrl}} *ngIf="blackjackGameService.blackjackgame.currentRound.players[0].cards[4];">
         <img class="player1card6" src={{this.blackjackGameService.blackjackgame.currentRound.players[0].cards[5].cardPictureUrl}} *ngIf="blackjackGameService.blackjackgame.currentRound.players[0].cards[5];">
+        <label style="position: relative; text-decoration-color: #24292e; left: -60px; bottom: -90px">{{this.blackjackGameService.blackjackgame.currentRound.players[0].totalCardPoints}}</label>
 
       </div>
       <div class="player1split">
@@ -532,62 +533,88 @@
         <img class="player1splitcard4" src={{this.blackjackGameService.blackjackgame.currentRound.players[0].splitCards[3].cardPictureUrl}} *ngIf="blackjackGameService.blackjackgame.currentRound.players[0].splitCards[3];">
         <img class="player1splitcard5" src={{this.blackjackGameService.blackjackgame.currentRound.players[0].splitCards[4].cardPictureUrl}} *ngIf="blackjackGameService.blackjackgame.currentRound.players[0].splitCards[4];">
         <img class="player1splitcard6" src={{this.blackjackGameService.blackjackgame.currentRound.players[0].splitCards[5].cardPictureUrl}} *ngIf="blackjackGameService.blackjackgame.currentRound.players[0].splitCards[5];">
+        <label style="position: relative; text-decoration-color: #24292e; left: -60px; bottom: -90px">{{this.blackjackGameService.blackjackgame.currentRound.players[0].totalSplitCardPoints}}</label>
+
       </div>
-      <div class="player2">
-        <img class="player2card1" src="../../assets/pictures/cards/2H.png">
-        <img class="player2card2" src="../../assets/pictures/cards/2H.png">
-        <img class="player2card3" src="../../assets/pictures/cards/2H.png">
-        <img class="player2card4" src="../../assets/pictures/cards/2H.png">
-        <img class="player2card5" src="../../assets/pictures/cards/2H.png">
+      <div class="player2" *ngIf="blackjackGameService.blackjackgame.currentRound.players[1];">
+        <img class="player2card1" src={{this.blackjackGameService.blackjackgame.currentRound.players[1].cards[0].cardPictureUrl}} *ngIf="blackjackGameService.blackjackgame.currentRound.players[1].cards[0];">
+        <img class="player2card2" src={{this.blackjackGameService.blackjackgame.currentRound.players[1].cards[1].cardPictureUrl}} *ngIf="blackjackGameService.blackjackgame.currentRound.players[1].cards[1];">
+        <img class="player2card3" src={{this.blackjackGameService.blackjackgame.currentRound.players[1].cards[2].cardPictureUrl}} *ngIf="blackjackGameService.blackjackgame.currentRound.players[1].cards[2];">
+        <img class="player2card4" src={{this.blackjackGameService.blackjackgame.currentRound.players[1].cards[3].cardPictureUrl}} *ngIf="blackjackGameService.blackjackgame.currentRound.players[1].cards[3];">
+        <img class="player2card5" src={{this.blackjackGameService.blackjackgame.currentRound.players[1].cards[4].cardPictureUrl}} *ngIf="blackjackGameService.blackjackgame.currentRound.players[1].cards[4];">
+        <img class="player2card6" src={{this.blackjackGameService.blackjackgame.currentRound.players[1].cards[5].cardPictureUrl}} *ngIf="blackjackGameService.blackjackgame.currentRound.players[1].cards[5];">
+        <label style="position: relative; text-decoration-color: #24292e; left: -60px; bottom: -90px">{{this.blackjackGameService.blackjackgame.currentRound.players[1].totalCardPoints}}</label>
+
       </div>
-      <div class="player2split">
-        <img class="player2splitcard1" src="../../assets/pictures/cards/2H.png">
-        <img class="player2splitcard2" src="../../assets/pictures/cards/2H.png">
-        <img class="player2splitcard3" src="../../assets/pictures/cards/2H.png">
-        <img class="player2splitcard4" src="../../assets/pictures/cards/2H.png">
-        <img class="player2splitcard5" src="../../assets/pictures/cards/2H.png">
+      <div class="player2split" *ngIf="blackjackGameService.blackjackgame.currentRound.players[1];">
+        <img class="player1splitcard1" src={{this.blackjackGameService.blackjackgame.currentRound.players[1].splitCards[0].cardPictureUrl}} *ngIf="blackjackGameService.blackjackgame.currentRound.players[1].splitCards[0];">
+        <img class="player1splitcard2" src={{this.blackjackGameService.blackjackgame.currentRound.players[1].splitCards[1].cardPictureUrl}} *ngIf="blackjackGameService.blackjackgame.currentRound.players[1].splitCards[1];">
+        <img class="player1splitcard3" src={{this.blackjackGameService.blackjackgame.currentRound.players[1].splitCards[2].cardPictureUrl}} *ngIf="blackjackGameService.blackjackgame.currentRound.players[1].splitCards[2];">
+        <img class="player1splitcard4" src={{this.blackjackGameService.blackjackgame.currentRound.players[1].splitCards[3].cardPictureUrl}} *ngIf="blackjackGameService.blackjackgame.currentRound.players[1].splitCards[3];">
+        <img class="player1splitcard5" src={{this.blackjackGameService.blackjackgame.currentRound.players[1].splitCards[4].cardPictureUrl}} *ngIf="blackjackGameService.blackjackgame.currentRound.players[1].splitCards[4];">
+        <img class="player1splitcard6" src={{this.blackjackGameService.blackjackgame.currentRound.players[1].splitCards[5].cardPictureUrl}} *ngIf="blackjackGameService.blackjackgame.currentRound.players[1].splitCards[5];">
+        <label style="position: relative; text-decoration-color: #24292e; left: -60px; bottom: -90px">{{this.blackjackGameService.blackjackgame.currentRound.players[0].totalSplitCardPoints}}</label>
+
       </div>
-      <div class="player3">
-        <img class="player3card1" src="../../assets/pictures/cards/2H.png">
-        <img class="player3card2" src="../../assets/pictures/cards/2H.png">
-        <img class="player3card3" src="../../assets/pictures/cards/2H.png">
-        <img class="player3card4" src="../../assets/pictures/cards/2H.png">
-        <img class="player3card5" src="../../assets/pictures/cards/2H.png">
+      <div class="player3" *ngIf="blackjackGameService.blackjackgame.currentRound.players[2];">
+        <img class="player3card1" src={{this.blackjackGameService.blackjackgame.currentRound.players[2].cards[0].cardPictureUrl}} *ngIf="blackjackGameService.blackjackgame.currentRound.players[2].cards[0];">
+        <img class="player3card2" src={{this.blackjackGameService.blackjackgame.currentRound.players[2].cards[1].cardPictureUrl}} *ngIf="blackjackGameService.blackjackgame.currentRound.players[2].cards[1];">
+        <img class="player3card3" src={{this.blackjackGameService.blackjackgame.currentRound.players[2].cards[2].cardPictureUrl}} *ngIf="blackjackGameService.blackjackgame.currentRound.players[2].cards[2];">
+        <img class="player3card4" src={{this.blackjackGameService.blackjackgame.currentRound.players[2].cards[3].cardPictureUrl}} *ngIf="blackjackGameService.blackjackgame.currentRound.players[2].cards[3];">
+        <img class="player3card5" src={{this.blackjackGameService.blackjackgame.currentRound.players[2].cards[4].cardPictureUrl}} *ngIf="blackjackGameService.blackjackgame.currentRound.players[2].cards[4];">
+        <img class="player3card6" src={{this.blackjackGameService.blackjackgame.currentRound.players[2].cards[5].cardPictureUrl}} *ngIf="blackjackGameService.blackjackgame.currentRound.players[2].cards[5];">
+        <label style="position: relative; text-decoration-color: #24292e; left: -60px; bottom: -90px">{{this.blackjackGameService.blackjackgame.currentRound.players[2].totalCardPoints}}</label>
+
       </div>
-      <div class="player3split">
-        <img class="player3splitcard1" src="../../assets/pictures/cards/2H.png">
-        <img class="player3splitcard2" src="../../assets/pictures/cards/2H.png">
-        <img class="player3splitcard3" src="../../assets/pictures/cards/2H.png">
-        <img class="player3splitcard4" src="../../assets/pictures/cards/2H.png">
-        <img class="player3splitcard5" src="../../assets/pictures/cards/2H.png">
+      <div class="player3split" *ngIf="blackjackGameService.blackjackgame.currentRound.players[2];" >
+        <img class="player3splitcard1" src={{this.blackjackGameService.blackjackgame.currentRound.players[2].splitCards[0].cardPictureUrl}} *ngIf="blackjackGameService.blackjackgame.currentRound.players[2].splitCards[0];">
+        <img class="player3splitcard2" src={{this.blackjackGameService.blackjackgame.currentRound.players[2].splitCards[1].cardPictureUrl}} *ngIf="blackjackGameService.blackjackgame.currentRound.players[2].splitCards[1];">
+        <img class="player3splitcard3" src={{this.blackjackGameService.blackjackgame.currentRound.players[2].splitCards[2].cardPictureUrl}} *ngIf="blackjackGameService.blackjackgame.currentRound.players[2].splitCards[2];">
+        <img class="player3splitcard4" src={{this.blackjackGameService.blackjackgame.currentRound.players[2].splitCards[3].cardPictureUrl}} *ngIf="blackjackGameService.blackjackgame.currentRound.players[2].splitCards[3];">
+        <img class="player3splitcard5" src={{this.blackjackGameService.blackjackgame.currentRound.players[2].splitCards[4].cardPictureUrl}} *ngIf="blackjackGameService.blackjackgame.currentRound.players[2].splitCards[4];">
+        <img class="player3splitcard6" src={{this.blackjackGameService.blackjackgame.currentRound.players[2].splitCards[5].cardPictureUrl}} *ngIf="blackjackGameService.blackjackgame.currentRound.players[2].splitCards[5];">
+        <label style="position: relative; text-decoration-color: #24292e; left: -60px; bottom: -90px">{{this.blackjackGameService.blackjackgame.currentRound.players[0].totalSplitCardPoints}}</label>
+
       </div>
-      <div class="player4">
-        <img class="player4card1" src="../../assets/pictures/cards/2H.png">
-        <img class="player4card2" src="../../assets/pictures/cards/2H.png">
-        <img class="player4card3" src="../../assets/pictures/cards/2H.png">
-        <img class="player4card4" src="../../assets/pictures/cards/2H.png">
-        <img class="player4card5" src="../../assets/pictures/cards/2H.png">
+      <div class="player4" *ngIf="blackjackGameService.blackjackgame.currentRound.players[3];">
+        <img class="player4card1" src={{this.blackjackGameService.blackjackgame.currentRound.players[3].cards[0].cardPictureUrl}} *ngIf="blackjackGameService.blackjackgame.currentRound.players[3].cards[0];">
+        <img class="player4card2" src={{this.blackjackGameService.blackjackgame.currentRound.players[3].cards[1].cardPictureUrl}} *ngIf="blackjackGameService.blackjackgame.currentRound.players[3].cards[1];">
+        <img class="player4card3" src={{this.blackjackGameService.blackjackgame.currentRound.players[3].cards[2].cardPictureUrl}} *ngIf="blackjackGameService.blackjackgame.currentRound.players[3].cards[2];">
+        <img class="player4card4" src={{this.blackjackGameService.blackjackgame.currentRound.players[3].cards[3].cardPictureUrl}} *ngIf="blackjackGameService.blackjackgame.currentRound.players[3].cards[3];">
+        <img class="player4card5" src={{this.blackjackGameService.blackjackgame.currentRound.players[3].cards[4].cardPictureUrl}} *ngIf="blackjackGameService.blackjackgame.currentRound.players[3].cards[4];">
+        <img class="player4card6" src={{this.blackjackGameService.blackjackgame.currentRound.players[3].cards[5].cardPictureUrl}} *ngIf="blackjackGameService.blackjackgame.currentRound.players[3].cards[5];">
+        <label style="position: relative; text-decoration-color: #24292e; left: -60px; bottom: -90px">{{this.blackjackGameService.blackjackgame.currentRound.players[3].totalCardPoints}}</label>
+
       </div>
-      <div class="player4split">
-        <img class="player4splitcard1" src="../../assets/pictures/cards/2H.png">
-        <img class="player4splitcard2" src="../../assets/pictures/cards/2H.png">
-        <img class="player4splitcard3" src="../../assets/pictures/cards/2H.png">
-        <img class="player4splitcard4" src="../../assets/pictures/cards/2H.png">
-        <img class="player4splitcard5" src="../../assets/pictures/cards/2H.png">
+      <div class="player4split" *ngIf="blackjackGameService.blackjackgame.currentRound.players[3];">
+        <img class="player4splitcard1" src={{this.blackjackGameService.blackjackgame.currentRound.players[3].splitCards[0].cardPictureUrl}} *ngIf="blackjackGameService.blackjackgame.currentRound.players[3].splitCards[0];">
+        <img class="player4splitcard2" src={{this.blackjackGameService.blackjackgame.currentRound.players[3].splitCards[1].cardPictureUrl}} *ngIf="blackjackGameService.blackjackgame.currentRound.players[3].splitCards[1];">
+        <img class="player4splitcard3" src={{this.blackjackGameService.blackjackgame.currentRound.players[3].splitCards[2].cardPictureUrl}} *ngIf="blackjackGameService.blackjackgame.currentRound.players[3].splitCards[2];">
+        <img class="player4splitcard4" src={{this.blackjackGameService.blackjackgame.currentRound.players[3].splitCards[3].cardPictureUrl}} *ngIf="blackjackGameService.blackjackgame.currentRound.players[3].splitCards[3];">
+        <img class="player4splitcard5" src={{this.blackjackGameService.blackjackgame.currentRound.players[3].splitCards[4].cardPictureUrl}} *ngIf="blackjackGameService.blackjackgame.currentRound.players[3].splitCards[4];">
+        <img class="player4splitcard6" src={{this.blackjackGameService.blackjackgame.currentRound.players[3].splitCards[5].cardPictureUrl}} *ngIf="blackjackGameService.blackjackgame.currentRound.players[3].splitCards[5];">
+        <label style="position: relative; text-decoration-color: #24292e; left: -60px; bottom: -90px">{{this.blackjackGameService.blackjackgame.currentRound.players[0].totalSplitCardPoints}}</label>
+
       </div>
-      <div class="player5">
-        <img class="player5card1" src="../../assets/pictures/cards/2H.png">
-        <img class="player5card2" src="../../assets/pictures/cards/2H.png">
-        <img class="player5card3" src="../../assets/pictures/cards/2H.png">
-        <img class="player5card4" src="../../assets/pictures/cards/2H.png">
-        <img class="player5card5" src="../../assets/pictures/cards/2H.png">
+      <div class="player5" *ngIf="blackjackGameService.blackjackgame.currentRound.players[4]">
+        <img class="player5card1" src={{this.blackjackGameService.blackjackgame.currentRound.players[4].cards[0].cardPictureUrl}} *ngIf="blackjackGameService.blackjackgame.currentRound.players[4].cards[0];">
+        <img class="player5card2" src={{this.blackjackGameService.blackjackgame.currentRound.players[4].cards[1].cardPictureUrl}} *ngIf="blackjackGameService.blackjackgame.currentRound.players[4].cards[1];">
+        <img class="player5card3" src={{this.blackjackGameService.blackjackgame.currentRound.players[4].cards[2].cardPictureUrl}} *ngIf="blackjackGameService.blackjackgame.currentRound.players[4].cards[2];">
+        <img class="player5card4" src={{this.blackjackGameService.blackjackgame.currentRound.players[4].cards[3].cardPictureUrl}} *ngIf="blackjackGameService.blackjackgame.currentRound.players[4].cards[3];">
+        <img class="player5card5" src={{this.blackjackGameService.blackjackgame.currentRound.players[4].cards[4].cardPictureUrl}} *ngIf="blackjackGameService.blackjackgame.currentRound.players[4].cards[4];">
+        <img class="player5card6" src={{this.blackjackGameService.blackjackgame.currentRound.players[4].cards[5].cardPictureUrl}} *ngIf="blackjackGameService.blackjackgame.currentRound.players[4].cards[5];">
+        <label style="position: relative; text-decoration-color: #24292e; left: -60px; bottom: -90px">{{this.blackjackGameService.blackjackgame.currentRound.players[4].totalCardPoints}}</label>
+
       </div>
-      <div class="player5split">
-        <img class="player5splitcard1" src="../../assets/pictures/cards/2H.png">
-        <img class="player5splitcard2" src="../../assets/pictures/cards/2H.png">
-        <img class="player5splitcard3" src="../../assets/pictures/cards/2H.png">
-        <img class="player5splitcard4" src="../../assets/pictures/cards/2H.png">
-        <img class="player5splitcard5" src="../../assets/pictures/cards/2H.png">
+      <div class="player5split" *ngIf="blackjackGameService.blackjackgame.currentRound.players[4]">
+        <img class="player5splitcard1" src={{this.blackjackGameService.blackjackgame.currentRound.players[4].splitCards[0].cardPictureUrl}} *ngIf="blackjackGameService.blackjackgame.currentRound.players[4].splitCards[0];">
+        <img class="player5splitcard2" src={{this.blackjackGameService.blackjackgame.currentRound.players[4].splitCards[1].cardPictureUrl}} *ngIf="blackjackGameService.blackjackgame.currentRound.players[4].splitCards[1];">
+        <img class="player5splitcard3" src={{this.blackjackGameService.blackjackgame.currentRound.players[4].splitCards[2].cardPictureUrl}} *ngIf="blackjackGameService.blackjackgame.currentRound.players[4].splitCards[2];">
+        <img class="player5splitcard4" src={{this.blackjackGameService.blackjackgame.currentRound.players[4].splitCards[3].cardPictureUrl}} *ngIf="blackjackGameService.blackjackgame.currentRound.players[4].splitCards[3];">
+        <img class="player5splitcard5" src={{this.blackjackGameService.blackjackgame.currentRound.players[4].splitCards[4].cardPictureUrl}} *ngIf="blackjackGameService.blackjackgame.currentRound.players[4].splitCards[4];">
+        <img class="player5splitcard6" src={{this.blackjackGameService.blackjackgame.currentRound.players[4].splitCards[5].cardPictureUrl}} *ngIf="blackjackGameService.blackjackgame.currentRound.players[4].splitCards[5];">
+        <label style="position: relative; text-decoration-color: #24292e; left: -60px; bottom: -90px">{{this.blackjackGameService.blackjackgame.currentRound.players[0].totalSplitCardPoints}}</label>
+
       </div>
     </div>
     <div class="container-fluid">
@@ -610,6 +637,12 @@
     <button type="button" class="btn btn-success btn-lg" (click)="testCreategame()">create game</button>
     <button type="button" class="btn btn-success btn-lg" (click)="this.blackjackGameService.connect()">connect game</button>
     <button type="button" class="btn btn-success btn-lg" (click)="dealcards()">deal game</button>
+    <button type="button" class="btn btn-success btn-lg" (click)="testaddplayer(2)">add player1</button>
+    <button type="button" class="btn btn-success btn-lg" (click)="testaddplayer(3)">add player2</button>
+    <button type="button" class="btn btn-success btn-lg" (click)="testaddplayer(4)">add player3</button>
+    <button type="button" class="btn btn-success btn-lg" (click)="testaddplayer(5)">add player4</button>
+
+
 
 
 

@@ -13,9 +13,9 @@ import {Player} from '../models/player';
 export class BlackJackGameComponent implements OnInit {
   blackjackGameService: BlackjackGameService;
   pictureSource: string;
-  cardPictureUrl: string;
   test = false;
-
+  player: Player;
+  testpoints : number;
 
   constructor(blackjackServiceService: BlackjackGameService) {
     this.blackjackGameService = blackjackServiceService;
@@ -51,8 +51,17 @@ export class BlackJackGameComponent implements OnInit {
 
 
   }
+
+  testaddplayer(playerid: number){
+    var player = new Player();
+    player.id = playerid;
+    player.username = "jantje";
+    player.money = 100;
+    this.blackjackGameService.addPlayer(player);
+  }
   dealcards(){
     var that = this;
+
     that.blackjackGameService.dealInitialCards();
     /*setTimeout(function() {
       that.blackjackGameService.blackjackgame.currentRound.players.forEach(player =>{
@@ -67,7 +76,9 @@ export class BlackJackGameComponent implements OnInit {
     var that = this;
     this.blackjackGameService.sendHit();
     setTimeout(function (){
-      that.blackjackGameService.blackjackgame.currentRound.players.forEach(player =>{
+      that.blackjackGameService.blackjackgame.currentRound.players.forEach(player1 =>{
+        var player = new Player();
+        player = player1;
         if (that.blackjackGameService.blackjackgame.currentRound.currentPlayer.id === player.id){
           if (player.splitBlackjack){
             console.log('split blackjack!')
@@ -123,13 +134,15 @@ export class BlackJackGameComponent implements OnInit {
       setTimeout(function (){
         console.log('repeating script')
         that.dealerScript();
-      },50)
+      },500)
     }
     else {
-      this.blackjackGameService.nextRound();
+      setTimeout(function (){
+        that.blackjackGameService.nextRound();
+      },4000)
       setTimeout(function (){
         that.dealcards();
-      },50)
+      },5000)
     }
 
 

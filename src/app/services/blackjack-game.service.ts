@@ -22,10 +22,16 @@ export class BlackjackGameService {
     let that = this;
     this.websocket.connect({}, function(frame) {
       that.websocket.subscribe("/client", function(message) {
-        that.blackjackgame = JSON.parse(message.body);
+        if (message !== undefined){
+          that.blackjackgame = JSON.parse(message.body);
+        }
+        else {
+          console.log("response was undefined")
+        }
       });
     }, function(error) {
-      alert("STOMP error " + error);
+      console.log(error);
+      that.connect();
     });
   }
 
@@ -68,7 +74,6 @@ export class BlackjackGameService {
     this.websocket.send('/app/nextRound', {}, JSON.stringify(this.blackjackgame));
   }
 
-  //todo make this working
   addPlayer(player: Player){
     this.websocket.send('/app/addPlayer', {}, JSON.stringify(player));
   }
