@@ -1,9 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {BlackjackGameService} from '../services/blackjack-game.service';
 import {Card} from '../models/card';
 import {Suits} from '../models/suits.enum';
 import {CardValues} from '../models/card-values.enum';
 import {Player} from '../models/player';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-black-jack-game',
@@ -11,17 +12,18 @@ import {Player} from '../models/player';
   styleUrls: ['./black-jack-game.component.css']
 })
 export class BlackJackGameComponent implements OnInit {
-  blackjackGameService: BlackjackGameService;
-  pictureSource: string;
-  test = false;
+
+  @Input() blackjackGameService: BlackjackGameService;
+
   player: Player;
   testpoints : number;
 
-  constructor(blackjackServiceService: BlackjackGameService) {
-    this.blackjackGameService = blackjackServiceService;
+  constructor(/*blackjackServiceService: BlackjackGameService*/) {
+    /*this.blackjackGameService = blackjackServiceService;*/
   }
 
   ngOnInit() {
+
   }
 
   /*test(){
@@ -40,16 +42,14 @@ export class BlackJackGameComponent implements OnInit {
     this.blackjackGame = this.blackjackGameService.blackjackgame;
 
   }*/
-
-  testCreategame(){
-    var player = new Player();
-    player.id = 1;
-    player.username = "pietje";
-    player.money = 100;
+  /*connect(){
+    this.blackjackGameService.connect();
+  }
+  creategame(player: Player){
     this.blackjackGameService.createNewGame(player);
-
-
-
+  }
+  test(){
+    console.log(this.blackjackGameService);
   }
 
   testaddplayer(playerid: number){
@@ -58,21 +58,21 @@ export class BlackJackGameComponent implements OnInit {
     player.username = "jantje";
     player.money = 100;
     this.blackjackGameService.addPlayer(player);
-  }
-  dealcards(){
+  }*/
+  /*dealcards(){
     var that = this;
 
     that.blackjackGameService.dealInitialCards();
-    /*setTimeout(function() {
+    /!*setTimeout(function() {
       that.blackjackGameService.blackjackgame.currentRound.players.forEach(player =>{
         if (player.blackjack){
 
         }
       });
-    }, 30);*/
-  }
+    }, 30);*!/
+  }*/
 
-  hit(){
+  /*hit(){
     var that = this;
     this.blackjackGameService.sendHit();
     setTimeout(function (){
@@ -158,6 +158,6 @@ export class BlackJackGameComponent implements OnInit {
     else {
       return this.blackjackGameService.blackjackgame.currentRound.dealer.visibleCard.cardPoints;
     }
-  }
+  }*/
 
 }

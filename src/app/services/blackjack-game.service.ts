@@ -4,16 +4,19 @@ import {Round} from '../models/round';
 import {Player} from '../models/player';
 import {BlackJackGameComponent} from '../black-jack-game/black-jack-game.component';
 import {BlackJackGame} from '../models/black-jack-game';
+import {BetDTO} from "../models/betDTO";
 
 @Injectable({
   providedIn: 'root'
 })
 export class BlackjackGameService {
-  //todo change all that use round to blackjackgame
   websocket: any;
   blackjackgame: BlackJackGame;
+  playerwinResults: [];
 
-  constructor(){}
+  constructor(){
+
+  }
 
   connect() {
 
@@ -23,7 +26,8 @@ export class BlackjackGameService {
     this.websocket.connect({}, function(frame) {
       that.websocket.subscribe("/client", function(message) {
         if (message !== undefined){
-          that.blackjackgame = JSON.parse(message.body);
+            console.log("normal game")
+            that.blackjackgame = JSON.parse(message.body);
         }
         else {
           console.log("response was undefined")
@@ -40,7 +44,99 @@ export class BlackjackGameService {
       this.websocket.ws.close();
     }
     console.log("Disconnected");
+
   }
+
+  hit(){
+    var that = this;
+    this.sendHit();
+    setTimeout(function (){
+      that.blackjackgame.currentRound.players.forEach(player1 =>{
+        var player = new Player();
+        player = player1;
+        if (that.blackjackgame.currentRound.currentPlayer.id === player.id){
+          if (player.splitBlackjack){
+            console.log('split blackjack!')
+            that.stand();
+          }
+          else if (player.blackjack){
+            console.log('blackjack!')
+            that.stand();
+          }
+          if (player.splitBust){
+            console.log('splitbusted!')
+            that.stand();
+          }
+          else if (player.bust){
+            console.log('busted!')
+            that.stand();
+          }
+        }
+      })
+
+    }, 30)
+  }
+
+  stand(){
+    var that = this;
+    this.sendStand();
+    setTimeout(function (){
+      if (that.blackjackgame.currentRound.dealersTurn === true){
+        that.dealerScript()
+      }
+    },30);
+
+  }
+
+  dealerScript(){
+    var that =this;
+    console.log(this.blackjackgame.currentRound.dealer.totalCardPoints);
+
+    if (this.blackjackgame.currentRound.dealer.totalCardPoints < 17){
+      this.sendHitDealer();
+      setTimeout(function (){
+        that.dealerShowCorrectPoints;
+      },50)
+      setTimeout(function (){
+        console.log('repeating script')
+        that.dealerScript();
+      },500)
+    }
+    else {
+      setTimeout(function (){
+        that.checkWinner();
+      },50)
+      setTimeout(function (){
+        that.nextRound();
+      },9900)
+      setTimeout(function (){
+        that.dealInitialCards();
+      },10000)
+    }
+
+
+  }
+
+  checkwinners(){
+    var that = this;
+    this.checkWinner();
+    setTimeout(function (){
+      console.log(that.blackjackgame.currentRound.players)
+    })
+
+  }
+
+
+  dealerShowCorrectPoints(){
+    if (this.blackjackgame.currentRound.dealersTurn){
+      return this.blackjackgame.currentRound.dealer.totalCardPoints;
+    }
+    else {
+      return this.blackjackgame.currentRound.dealer.visibleCard.cardPoints;
+    }
+  }
+
+
 
   sendHit() {
     this.websocket.send('/app/hit', {}, JSON.stringify(this.blackjackgame));
@@ -88,12 +184,29 @@ export class BlackjackGameService {
 
   }
 
+  setBet(player: Player, bet: number){
+    var betDTO: BetDTO;
+    betDTO = new BetDTO();
+    betDTO.bet = bet;
+    betDTO.player = player;
+    betDTO.blackjackgame= this.blackjackgame;
+    this.websocket.send('/app/bet', {}, JSON.stringify(betDTO));
+
+  }
+
   //todo make return value get added to player money
   giveWinnings(player: Player){
     this.websocket.send('/app/addPlayer', {}, JSON.stringify(player));
 
 
   }
+
+  getGame(){
+    this.websocket.send('/app/getGames', {});
+
+  }
+
+
 
 
 

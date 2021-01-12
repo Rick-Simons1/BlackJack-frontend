@@ -1,0 +1,62 @@
+<app-black-jack-game [blackjackGameService]="blackjackgameService" *ngIf="blackjackgameService.blackjackgame"></app-black-jack-game>
+<div *ngIf="blackjackgameService.blackjackgame">
+  <div class="btncontainer" *ngIf="blackjackgameService.blackjackgame.currentRound.currentPlayer.id == player.id">
+    <button type="button" class="btn btn-success btn-lg" (click)="this.blackjackgameService.hit()">hit</button>
+    <button type="button" class="btn btn-success btn-lg" (click)="this.blackjackgameService.stand()">stand</button>
+    <button type="button" class="btn btn-success btn-lg" (click)="this.blackjackgameService.sendSplit()">split</button>
+    <button type="button" class="btn btn-success btn-lg" (click)="this.blackjackgameService.sendDouble()">double</button>
+  </div>
+
+</div>
+<div>
+  <div class="form-group">
+    <label for="bet">bet</label>
+    <input type="text" [(ngModel)]="playerbet"
+           class="form-control"
+           id="bet"
+           name="bet"
+           placeholder="Enter your bet"
+           required #id="ngModel">
+  </div>
+  <button type="button" class="btn btn-success btn-lg" (click)="this.blackjackgameService.setBet(this.player, this.playerbet)">bet</button>
+
+</div>
+
+<form (ngSubmit)="onSubmit()" #userForm="ngForm">
+  <div class="form-group">
+    <label for="id">id</label>
+    <input type="text" [(ngModel)]="player.id"
+           class="form-control"
+           id="id"
+           name="id"
+           placeholder="Enter your username"
+           required #id="ngModel">
+  </div>
+  <div [hidden]="!username.pristine" class="alert alert-danger">id is required</div>
+  <div class="form-group">
+    <label for="username">username</label>
+    <input type="text" [(ngModel)]="player.username"
+           class="form-control"
+           id="username"
+           name="username"
+           placeholder="Enter your username"
+           required #username="ngModel">
+  </div>
+  <div [hidden]="!username.pristine" class="alert alert-danger">username is required</div>
+  <button id="loginButton" type="submit" [disabled]="!userForm.form.valid"
+          class="btn btn-info">
+    Submit
+  </button>
+</form>
+<button type="button" class="btn btn-success btn-lg" (click)="createNewGame()">create new game</button>
+<button type="button" class="btn btn-success btn-lg" (click)="joinGame()">join game</button>
+<button type="button" class="btn btn-success btn-lg" (click)="log()">log</button>
+
+
+<!--
+<button type="button" class="btn btn-success btn-lg" (click)="joinGame()">join game</button>
+-->
+
+<!--<ul class="list-group">
+  <li *ngFor="let blackjackgame of lobbyService.blackjackGames">{{blackjackgame.id}}</li>
+</ul>-->

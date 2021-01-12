@@ -15,7 +15,10 @@ export class Player {
   splitBlackjack: boolean;
   bust: boolean;
   splitBust: boolean;
-
+  win: boolean;
+  splitWin: boolean;
+  draw: boolean;
+  splitDraw: boolean;
   constructor() {
   }
 }

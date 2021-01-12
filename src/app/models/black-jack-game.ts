@@ -1,7 +1,7 @@
 import {Round} from './round';
 
 export class BlackJackGame {
-  id: number;
+  id: string;
   rounds: [];
   currentRound: Round;
 
