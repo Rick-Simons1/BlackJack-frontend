@@ -39,7 +39,7 @@ export class LobbyComponent implements OnInit {
     setTimeout(function (){
       that.blackjackgameService.setBet(that.player, that.playerbet);
 
-    }, 300)
+    }, 400)
     setTimeout(function (){
       that.blackjackgameService.dealInitialCards();
 
@@ -62,6 +62,20 @@ export class LobbyComponent implements OnInit {
   }
   onSubmit(){
     console.log(this.player)
+  }
+
+  bet(){
+    console.log('sending bet');
+    this.blackjackgameService.setBet(this.player, this.playerbet);
+  }
+
+  addAiPlayer()
+  {
+    var player = new Player();
+    player.id = 999;
+    player.username = 'aiPlayer'
+    player.money = 10000;
+    this.blackjackgameService.addPlayer(player);
   }
 
 

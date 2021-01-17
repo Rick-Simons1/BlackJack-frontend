@@ -620,7 +620,7 @@
     <div class="container-fluid">
       <div class="dealer">
         <img class="dealercard1" src={{this.blackjackGameService.blackjackgame.currentRound.dealer.cards[0].cardPictureUrl}} *ngIf="blackjackGameService.blackjackgame.currentRound.dealer.cards[0];">
-        <img class="dealercard2" [src]="blackjackGameService.blackjackgame.currentRound.dealersTurn != true ? '../../assets/pictures/cards/gray_back.png' : blackjackGameService.blackjackgame.currentRound.dealer.cards[1].cardPictureUrl">
+        <img class="dealercard2" [src]="blackjackGameService.showSecondCard != true ? '../../assets/pictures/cards/gray_back.png' : blackjackGameService.blackjackgame.currentRound.dealer.cards[1].cardPictureUrl">
         <img class="dealercard3" src={{this.blackjackGameService.blackjackgame.currentRound.dealer.cards[2].cardPictureUrl}} *ngIf="blackjackGameService.blackjackgame.currentRound.dealer.cards[2];">
         <img class="dealercard4" src={{this.blackjackGameService.blackjackgame.currentRound.dealer.cards[3].cardPictureUrl}} *ngIf="blackjackGameService.blackjackgame.currentRound.dealer.cards[3];">
         <img class="dealercard5" src={{this.blackjackGameService.blackjackgame.currentRound.dealer.cards[4].cardPictureUrl}} *ngIf="blackjackGameService.blackjackgame.currentRound.dealer.cards[4];">

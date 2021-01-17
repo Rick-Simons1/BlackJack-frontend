@@ -13,6 +13,8 @@ export class BlackjackGameService {
   websocket: any;
   blackjackgame: BlackJackGame;
   playerwinResults: [];
+  betPhase: boolean;
+  showSecondCard: boolean;
 
   constructor(){
 
@@ -28,6 +30,21 @@ export class BlackjackGameService {
         if (message !== undefined){
             console.log("normal game")
             that.blackjackgame = JSON.parse(message.body);
+            if (that.blackjackgame.currentRound.currentPlayer.id === 999){
+              that.sendAiStart();
+            }
+            else {
+              if (that.blackjackgame.currentRound.dealersTurn === true){
+                that.dealerScript();
+              }
+              if (that.blackjackgame.currentRound.players[0].blackjack === true){
+                if (that.blackjackgame.currentRound.currentPlayer.id === that.blackjackgame.currentRound.players[0].id){
+                  console.log('blackjack!')
+                  that.stand();
+                }
+
+              }
+            }
         }
         else {
           console.log("response was undefined")
@@ -80,18 +97,18 @@ export class BlackjackGameService {
   stand(){
     var that = this;
     this.sendStand();
-    setTimeout(function (){
-      if (that.blackjackgame.currentRound.dealersTurn === true){
-        that.dealerScript()
-      }
-    },30);
+      /*setTimeout(function (){
+        if (that.blackjackgame.currentRound.dealersTurn === true){
+          that.dealerScript()
+        }
+      },30);*/
 
   }
 
   dealerScript(){
     var that =this;
     console.log(this.blackjackgame.currentRound.dealer.totalCardPoints);
-
+    this.showSecondCard = true;
     if (this.blackjackgame.currentRound.dealer.totalCardPoints < 17){
       this.sendHitDealer();
       setTimeout(function (){
@@ -108,10 +125,13 @@ export class BlackjackGameService {
       },50)
       setTimeout(function (){
         that.nextRound();
-      },9900)
+        that.betPhase = true;
+        that.showSecondCard = false;
+      },500)
       setTimeout(function (){
+        that.betPhase = false;
         that.dealInitialCards();
-      },10000)
+      },1000)
     }
 
 
@@ -128,7 +148,7 @@ export class BlackjackGameService {
 
 
   dealerShowCorrectPoints(){
-    if (this.blackjackgame.currentRound.dealersTurn){
+    if (this.showSecondCard){
       return this.blackjackgame.currentRound.dealer.totalCardPoints;
     }
     else {
@@ -206,6 +226,10 @@ export class BlackjackGameService {
 
   }
 
+  sendAiStart(){
+    this.websocket.send('/app/aiStart', {}, JSON.stringify(this.blackjackgame));
+
+  }
 
 
 
