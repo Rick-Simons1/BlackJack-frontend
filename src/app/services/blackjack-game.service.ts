@@ -12,7 +12,7 @@ import {BetDTO} from "../models/betDTO";
 export class BlackjackGameService {
   websocket: any;
   blackjackgame: BlackJackGame;
-  playerwinResults: [];
+  playerWinners = [];
   betPhase: boolean;
   showSecondCard: boolean;
 
@@ -37,7 +37,9 @@ export class BlackjackGameService {
               if (that.blackjackgame.currentRound.dealersTurn === true){
                 that.dealerScript();
               }
+              // @ts-ignore
               if (that.blackjackgame.currentRound.players[0].blackjack === true){
+                // @ts-ignore
                 if (that.blackjackgame.currentRound.currentPlayer.id === that.blackjackgame.currentRound.players[0].id){
                   console.log('blackjack!')
                   that.stand();
@@ -122,19 +124,35 @@ export class BlackjackGameService {
     else {
       setTimeout(function (){
         that.checkWinner();
-      },50)
+      },100)
       setTimeout(function (){
+        that.displayWinners();
+      },300)
+      setTimeout(function (){
+        that.playerWinners = [];
         that.nextRound();
         that.betPhase = true;
         that.showSecondCard = false;
-      },500)
+      },4500)
       setTimeout(function (){
         that.betPhase = false;
         that.dealInitialCards();
-      },1000)
+      },5000)
     }
 
 
+  }
+
+  displayWinners(){
+    this.blackjackgame.currentRound.players.forEach(playerx => {
+      let player: Player;
+      player = playerx;
+      if (player.win === true){
+        // @ts-ignore
+        this.playerWinners.push(player);
+        console.log(player);
+      }
+    })
   }
 
   checkwinners(){
@@ -194,6 +212,14 @@ export class BlackjackGameService {
     this.websocket.send('/app/addPlayer', {}, JSON.stringify(player));
   }
 
+  removePlayer(player: Player){
+    var betDTO: BetDTO;
+    betDTO = new BetDTO();
+    betDTO.player = player;
+    betDTO.blackjackgame= this.blackjackgame;
+    this.websocket.send('/app/removePlayer', {}, JSON.stringify(betDTO));
+  }
+
   checkWinner(){
     this.websocket.send('/app/checkWinner', {}, JSON.stringify(this.blackjackgame));
   }
@@ -214,17 +240,7 @@ export class BlackjackGameService {
 
   }
 
-  //todo make return value get added to player money
-  giveWinnings(player: Player){
-    this.websocket.send('/app/addPlayer', {}, JSON.stringify(player));
 
-
-  }
-
-  getGame(){
-    this.websocket.send('/app/getGames', {});
-
-  }
 
   sendAiStart(){
     this.websocket.send('/app/aiStart', {}, JSON.stringify(this.blackjackgame));

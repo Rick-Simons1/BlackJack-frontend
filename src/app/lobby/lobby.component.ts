@@ -45,9 +45,7 @@ export class LobbyComponent implements OnInit {
 
     }, 2000)
 
-/*
-    this.lobbyService.addGame(new BlackJackGameComponent(new BlackjackGameService(),))
-*/
+
   }
   log(){
     console.log(this.playerbet);
@@ -69,6 +67,11 @@ export class LobbyComponent implements OnInit {
     this.blackjackgameService.setBet(this.player, this.playerbet);
   }
 
+  leaveGame(){
+    this.blackjackgameService.removePlayer(this.player)
+  }
+
+
   addAiPlayer()
   {
     var player = new Player();
@@ -76,6 +79,13 @@ export class LobbyComponent implements OnInit {
     player.username = 'aiPlayer'
     player.money = 10000;
     this.blackjackgameService.addPlayer(player);
+  }
+
+  removeAiPlayer()
+  {
+    var player = new Player();
+    player.id = 999;
+    this.blackjackgameService.removePlayer(player);
   }
 
 
